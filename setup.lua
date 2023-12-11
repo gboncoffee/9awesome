@@ -2,12 +2,6 @@ local beautiful = require "beautiful"
 local awful = require "awful"
 local gears = require "gears"
 
-local wallpaper = function()
-    awful.spawn("nitrogen --restore")
-end
-
-wallpaper()
-
 awful.rules.rules = {
     { rule = {}, properties = {
         border_width = beautiful.border_width,
@@ -25,6 +19,7 @@ awful.layout.layouts = { awful.layout.suit.floating }
 
 awful.screen.connect_for_each_screen(function(s)
     awful.tag(tags, s, awful.layout.layouts[1])
+    wallpaper(s)
 
     require("acmebar").setup(s)
 end)
